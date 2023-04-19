@@ -8,7 +8,7 @@ export const Navbar = () => {
     const { openSideMenu } = useContext(UIContext);
 
     return (
-        <AppBar position='sticky' elevation={ 0 }>
+        <AppBar position='sticky' elevation={ 0 } sx={{ width: '100%' }}>
             <Toolbar>
                 <IconButton 
                     size='large'
