@@ -23,7 +23,6 @@ const HomePage:NextPage = () => {
             height: 'calc(100vh - 100px)'
           }}>
             <CardHeader title='In progress' />
-            <NewEntry />
             <EntryList status='in-progress'/>
           </Card>
         </Grid>
@@ -32,7 +31,6 @@ const HomePage:NextPage = () => {
             height: 'calc(100vh - 100px)'
           }}>
             <CardHeader title='Completed' />
-            <NewEntry />
             <EntryList status='completed'/>
           </Card>
         </Grid>
