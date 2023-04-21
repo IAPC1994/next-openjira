@@ -22,7 +22,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 
         case 'PUT':
             return updateEntry( req, res );
-            
+
+        case 'DELETE':
+            return deleteEntryById( req, res );
             
             default:
                 return res.status(400).json({ message: 'The method is invalid' });
@@ -66,4 +68,17 @@ const getEntryById = async( req: NextApiRequest, res: NextApiResponse<Data> ) =>
     }
 
     res.status(200).json( entryById );
+}
+
+const deleteEntryById = async( req: NextApiRequest, res: NextApiResponse<Data> ) => {
+    const { id } = req.query;
+    await db.connect();
+    const entryDeleted = await Entry.findByIdAndDelete( id );
+    await db.disconnect();
+
+    if( !entryDeleted ){
+        return res.status(400).json({ message: 'No entries with this ID: ' + id });
+    }
+
+    return res.status(200).json({ message: 'Entry deleted' });
 }
